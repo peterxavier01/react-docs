@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/index.css">
+    </link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <title>React Documentation</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>React Documentation</header>
+        <a href="#Introduction" class="nav-link">Introduction</a>
+        <a href="#Components" class="nav-link">Components</a>
+        <a href="#JSX" class="nav-link">JSX</a>
+        <a href="#Props" class="nav-link">Props</a>
+        <a href="#State" class="nav-link">State</a>
+        <a href="#Hooks" class="nav-link">Hooks</a>
+        <a href="#Event_Handling" class="nav-link">Event Handling</a>
+        <a href="#Lifecycle_Methods" class="nav-link">Lifecycle Methods</a>
+        <a href="#Rendering_Lists" class="nav-link">Rendering Lists</a>
+        <a href="#React_Router" class="nav-link">React Router</a>
+    </nav>
+    <main id="main-doc">
+
+        <section class="main-section" id="Introduction">
+            <header>Introduction</header>
+            <p>React is one of the most popular JavaScript libraries used for front-end development. It was developed by
+                Facebook.</p>
+            <br>
+            <p>Unlike other libraries which manipulate the DOM, React possesses what is called a <strong>Virtual
+                    DOM</strong> which allows it update only the parts of the website that have changed. This
+                drastically increases the speed of updates</p>
+            <br>
+            <p>React is open source and it also has a very large community. It is maintained by the community and
+                Facebook.</p>
+            <br>
+            <p>To get started with React, ensure that you have Nodejs installed on your local computer. To setup a new
+                React Project, Facebook has provided a simple tool called <strong>Create React App</strong></p>
+            <br>
+            <p>To create a new React app with Create-React-App, run the following command in the Terminal to create a
+                React app called "first-app"</p>
+            <div id="code">
+<pre>
+    <code>
+        npx create-react-app first-app
+        cd first-app
+        npm start
+    </code>
+</pre>
+            </div>
+            <p>This will install the required dependencies, then configure and start the app on
+                <strong>localhost:3000</strong></p>
+        </section>
+
+        <section class="main-section" id="Components">
+            <header>Components</header>
+            <p>Components in React allow a webpage to be split into separate and reuseable parts. For example, a navbar
+                can be taken as a component to be reused on the various pages of a particular website. A button or a
+                search bar could also be taken as components as the case may be.</p><br>
+            <p>The idea of components is derived from a programming concept called <strong>Separation of
+                    concerns</strong> which states that each concern should be separated into individual pieces.</p><br>
+            <p>In React, there are two types of components:</p><br>
+            <li>Functional components</li>
+            <li>Class components</li><br>
+            <p>A <strong>functional component</strong> is simply a JavaScript function; although its name must begin
+                with capital letter, else the browser will treat it like an HTML element instead of a component.</p><br>
+            <p>An example of a functional component is shown below:</p>
+            <div id="code">
+<pre>
+    <code>
+        function Greeting() {
+            return &lt;h1&gt;Hello world.&lt;/h1&gt;;
+        }
+    </code>
+</pre>
+            </div>
+            <p>The code above defines a functional component called <strong>Greeting</strong>, which returns a simple
+                React element.</p><br>
+            <p>On the other hand, class components extend the <strong>React.Component</strong> class and are used for
+                more advanced user interactions like animations, forms, e.t.c.</p><br>
+            <p>Rewriting the <strong>Greeting</strong> functional component as class component:</p>
+            <div id="code">
+<pre>
+    <code>
+        class Greeting extends React.Component {
+            render() {
+                return &lt;h1&gt;Hello world.&lt;/h1&gt;;
+            }  
+        }
+    </code>
+</pre>
+            </div>
+            <p>Class components require a <strong>render</strong> method because it determines what is shown on a
+                webpage.</p>
+            <p>In rendering components, we need to create a corresponding JSX element. For example:</p>
+            <div id="code">
+<pre>
+    <code>
+        const element = &lt;Greeting /&gt;;
+    </code>
+</pre>
+            </div>
+            <p>Now, we can render our component on the page using our user-defined element: </p>
+            <div id="code">
+<pre>
+    <code>
+        function Greeting() {
+                return &lt;h1&gt;Hello world.&lt;/h1&gt;;
+        }
+        const element = &lt;Greeting /&gt;;
+        ReactDOM.render(
+            element,
+            document.getElementById('root')
+        );
+    </code>
+</pre>
+            </div>
+        </section>
+
+        <section class="main-section" id="JSX">
+            <header>JSX</header>
+            <p>JSX is a syntax extension to JavaScript that enables us to build UI elements right in the JavaScript
+                code.</p><br>
+            <p>It should be noted that React does not require JSX. It is just a common practice in the community to use
+                JSX as it eases user interface development. It also allows React to show useful warnings and error
+                messages.</p><br>
+            <p>The code below shows how a JSX syntax looks like:</p>
+            <div id="code">
+<pre>
+    <code>
+        ReactDOM.render(
+            &lt;h1&gt;Hello world.&lt;/h1&gt;;
+            document.getElementById('root')
+        );
+    </code>
+</pre>
+            </div>
+            <p><strong>&lt;h1&gt;Hello world.&lt;/h1&gt;</strong> is the JSX element.</p><br>
+            <p>We can write any JavaScript expression inside JSX using curly braces.</p><br>
+            <div id="code">
+<pre>
+    <code>
+        const car = "Mercedes";
+        const element = &lt;p&gt;I have the latest {car}.&lt;/p&gt;;
+
+        ReactDOM.render(
+            element,
+            document.getElementById('root')
+        );
+    </code>
+</pre>
+            </div>
+        </section>
+
+        <section class="main-section" id="Props">
+            <header>Props</header>
+            <p>Similar to JavaScript functions, functional components can accept arguments called
+                <strong>props</strong>, which represent an object.</p><br>
+            <p>We can use props in our Greeting component as shown below:</p>
+            <div id="code">
+<pre>
+    <code>
+        function Greeting(props) {
+            return &lt;p&gt;Hello, {props.name}.&lt;/p&gt;;
+        }
+    </code>
+</pre>
+            </div>
+            <p>We can now add a name attribute to our element:</p>
+            <div id="code">
+<pre>
+    <code>
+        const element = &lt;Greeting name="Mike" /&gt;;
+    </code>
+</pre>
+            </div>
+            <p>Note the following:</p><br>
+            <li>An element can possess multiple custom attributes which will be passed to the component using the props
+                object.</li>
+            <li>Also, you can assign custom names to your attributes</li>
+            <li>Props are read-only i.e. components cannot modify their props.</li><br>
+            <p>Class components also use props but in a slightly different way:</p>
+            <div id="code">
+<pre>
+    <code>
+        class Greeting extends React.Component {
+            render() {
+                return &lt;p&gt;Hello {this.props.name}.&lt;/p&gt;;
+            }  
+        }
+    </code>
+</pre>
+            </div>
+            <p>Class components access props by using <strong>this.props</strong>.</p>
+        </section>
+
+        <section class="main-section" id="State">
+            <header>State</header>
+            <p>Alot of web apps require their components to change their data, for example, typing in a input field,
+                clicking a button,etc. This is where <strong>State</strong> comes into the picture. State allows
+                components to manage and change their data. It is an object added as a property in class components.</p>
+            <br>
+            <div id="code">
+<pre>
+    <code>
+        class Greeting extends React.Component {
+            state = {
+                name: "Dave"
+            }
+
+            render() {
+                return &lt;h2&gt;Hello {this.state.name}.&lt;/h2&gt;;
+            }  
+        }
+    </code>
+</pre>
+            </div>
+            <p>From the code above:</p><br>
+            <li>It can be seen that state is just a simple object containing key:value pairs.</li>
+            <li>Also, similar to props, the values can be accessed using <strong>this.state</strong>.</li>
+            <li>When the component renders, the state will be initialized with the given value and a heading that reads
+                "Hello Dave".</li>
+            <li>Also, note that state object can contain multiple key:value pairs, separated by commas as in a regular
+                JavaScript object.</li><br>
+            <p>State should not be modified directly. React provides a <strong>setState()</strong> method for modifying
+                state.</p>
+            <div id="code">
+<pre>
+    <code>
+        this.setState({
+            name: "Mike",
+            age: 30
+        });
+    </code>
+</pre>
+            </div>
+            <p>You need to pass an object with the new key:value pairs to the <strong>setState</strong> method.</p><br>
+            <p>When <strong>setState</strong> is called, React automatically re-renders the affected component with the
+                new state.</p><br>
+            <p>The code below shows the <strong>setState</strong> method in action:</p><br>
+            <div id="code">
+<pre>
+    <code>
+        class Counter extends React.Component {
+            state = {
+                counter: 0;
+            }
+            increment = () => {
+                this.setState({
+                    counter: this.state.counter + 1
+                });
+            }
+            render() {
+                return &lt;div&gt;
+                &lt;p&gt;{this.state.counter}&lt;/p&gt;
+                &lt;button onClick = {this.increment}&gt;Increment&lt;/button&gt;
+                &lt;/div&gt;;
+            }
+        }
+    </code>
+</pre>
+            </div>
+            <p>Components that use state are known a <strong>stateful</strong>, while components that do not use state
+                are known as <strong>stateless</strong>.</p>
+        </section>
+
+        <section class="main-section" id="Hooks">
+            <header>Hooks</header>
+            <p>Earlier versions of React only allowed the use of state with class components. Recent versions introduced
+                a new feature called <strong>hooks</strong> which allows the use of state with functional components.
+            </p><br>
+            <p>The hook that allows the use of state in functional components is called the <strong>useState</strong>
+                hook. To use it, we first need to import it:</p>
+            <div id="code">
+<pre>
+    <code>
+        import React, { useState } from "react";
+    </code>
+</pre>
+            </div>
+            <p><strong>useState</strong> returns the current state value and a function, that lets you change the state.
+                Also, <strong>useState</strong> takes one argument, which is the initial value of the state.</p><br>
+            <p>See the useState hook in action:</p>
+            <div id="code">
+<pre>
+    <code>
+        function Greeting() {
+            const [name, setName] = useState("Mike");
+
+            return &lt;h2&gt;Hello {name}.&lt;/h2&gt;;
+        } 
+    </code>
+</pre>
+            </div>
+            <p>From the example above:</p><br>
+            <li>We create a <strong>name</strong> state variable and a <strong>setState</strong> function.</li>
+            <li>The square brackets syntax is known as <strong>array destructuring</strong>. This assigns the
+                <strong>name</strong> variable to the current state value and <strong>setName</strong> to the function
+                that allows the change of state.</li>
+            <li>The variables can be given any names of your choice.</li>
+            <li>We then pass "Mike" as the initial value for our name variable to <strong>useState()</strong>.</li>
+            <li>Lastly, you can create multiple state variables with their corresponding set methods.</li><br>
+            <p>We can rewrite the counter app example given in the <strong>state</strong> section using functional
+                components and hooks, instead of class components:</p>
+            <div id="code">
+<pre>
+    <code>
+        function Counter() {
+            const [counter, setCounter] = useState(0);
+
+            function increment() {
+                    setCounter(counter + 1);
+            }
+            
+                return &lt;div&gt;
+                &lt;p&gt;{counter}&lt;/p&gt;
+                &lt;button onClick = {increment}&gt;Increment&lt;/button&gt;
+                &lt;/div&gt;;
+            }
+        }
+    </code>
+</pre>
+            </div>
+            <p>It can be observed that, compared to class components, the code is more concise and easier to read and
+                understand.</p><br>
+            <p>Finally, keep in mind that hooks can only be used inside functional components.</p>
+        </section>
+
+        <section class="main-section" id="Event_Handling">
+            <header>Event Handling</header>
+            <p>Event handling in React is almost the same as handling events in the DOM. The only difference is that the
+                event handler needs to be passed in curly braces and the event names are in camelCase.</p>
+            <div id="code">
+<pre>
+    <code>
+        &lt;button onClick = {handleClick}&gt;Click Me&lt;/button&gt;
+    </code>
+</pre>
+            </div>
+            <p>Click the button will call the <strong>handleClick</strong> function.</p><br>
+            <p>Users interact with web pages in various ways and one of them is by inputting in text fields. User input
+                in React is handled using the <strong>onChange</strong> event of the text field.</p><br>
+            <p>When there is a change in the value of the text field, the event handler is called, thereby updating the
+                value of the text field in the state. This allows one to always have the actual value of the text field
+                in the state.</p><br>
+            <p>Let's see we handle user input in React:</p>
+            <div id="code">
+<pre>
+    <code>
+        function Converter() {
+            const [mm, setMm] = useState(0);
+
+            function handleChange(e) {
+                setMm(e.target.value);
+            }
+
+            function convert(mm) {
+                return (mm/1000).toFixed(3);
+            }
+
+            return &lt;div&gt;
+                    &lt;input type="text" 
+                            value={mm}
+                            onChange={handleChange}
+                    /&gt;
+                    &lt;p&gt; {mm} mm is {convert(mm)} metres &lt;/p&gt;
+                    &lt;/div&gt;
+        }
+    </code>
+</pre>
+            </div>
+            <p>The Converter component above:</p><br>
+            <li>Includes a text field that calls the <strong>handleChange</strong> function when its value changes.</li>
+            <li>The handleChange function updates the state with the current value of the text field, which results in
+                the re-rendering of the component and displays the corresponding metre value.</li>
+            <li>The value of the text field is accessed through the <strong>e</strong> object, which is the React event.
+                It is passed to the event handler function as an argument and used to access the event object.</li><br>
+            <p>When a form is submitted, the default behaviour is to reload the page. To prevent this behaviour, we can
+                use the following lines of code in our <strong>handleSubmit</strong> function:</p>
+            <div id="code">
+<pre>
+    <code>
+        function handleSubmit(e) {
+            //Some lines of code
+            e.preventDefault();
+        }
+    </code>
+</pre>
+            </div>
+            <p>The <strong>e.preventDefault()</strong> statement is what prevents this default behaviour.</p>
+        </section>
+
+        <section class="main-section" id="Lifecycle_Methods">
+            <header>Lifecycle Methods</header>
+            <p>Some unique methods are provided by React for class components which are called when components are
+                mounted, unmounted or updated. These methods are called <strong>Lifecycle Methods</strong></p><br>
+            <p><strong>Mounting</strong> is the process whereby a component is rendered on the page. Whereas,
+                <strong>Unmounting</strong> is the process whereby a component is removed from the page.</p><br>
+            <p>Some of these lifecycle methods are:</p><br>
+            <li>componentDidMount()</li>
+            <li>componentWillUnmount()</li>
+            <li>componentDidUpdate()</li><br>
+            <p>The <strong>componentDidMount</strong> method is called when a component is rendered on the page. For
+                example, we can use it in our Counter app to set the initial value of the counter:</p>
+            <div id="code">
+<pre>
+    <code>
+        componentDidMount() {
+            this.setState({counter: 20});
+        }
+    </code>
+</pre>
+            </div>
+            <p>This will set the initial value of the counter when the component is rendered.</p><br>
+            <p>The <strong>componentWillUnmount()</strong> lifecycle method is called right before the component is
+                removed from the DOM. It can be used to free up resources taken by the component.</p><br>
+            <p>The <strong>componentDidUpdate()</strong> lifecycle method is called when a component is updated in the
+                DOM. For example, we can alert the current value of the counter app after each increment:</p>
+            <div id="code">
+<pre>
+    <code>
+        componentDidUpdate() {
+            alert("Counts: " + this.state.counter);
+        }
+    </code>
+</pre>
+            </div>
+            <p><strong>componentDidUpdate()</strong> is only called when a component is updated.</p><br>
+            <p>The lifecycle methods just covered are only available for class components. However, React provides a
+                hook called <strong>useEffect</strong>, which makes lifecycle methods available to functional
+                components. It is a combination of the <strong>componentDidMount</strong>,
+                <strong>componentWillUnmount</strong> and <strong>componentDidUpdate</strong> methods.</p><br>
+            <p>Using the <strong>useEffect</strong> hook in place of the lifecycle methods in our counter app:</p>
+            <div id="code">
+<pre>
+    <code>
+        useEffect(() => {
+            alert("Counts: " + counter);
+        });
+    </code>
+</pre>
+            </div>
+            <p>You will notice that the alert box pops during the initial rendering of the page. This is because
+                <strong>useEffect</strong> runs both during the first render and after every update.</p><br>
+            <p>To call the method only when there are changes, we will introduce a second argument known as a
+                <strong>dependencies array</strong>:</p>
+            <div id="code">
+<pre>
+    <code>
+        useEffect(() => {
+            alert("Counts: " + counter);
+        }, [count]);
+    </code>
+</pre>
+            </div>
+            <p>Now, the useEffect() method will only run when the count changes.</p><br>
+            <p>Note that the useEffect hook has to be imported just like the <strong>useState</strong> hook:</p>
+            <div id="code">
+<pre>
+    <code>
+        import React, { useState, useEffect } from "react";
+    </code>
+</pre>
+            </div>
+
+        </section>
+        <section class="main-section" id="Rendering_Lists">
+            <header>Rendering Lists</header>
+            <p>Repeating elements such as lists or sections are usually seen in web apps, whereby the same DOM element
+                is repeated with a different data set.</p><br>
+            <p>Let look at an array of names:</p>
+            <div id="code">
+<pre>
+    <code>
+        const names = ["Mike", "Dave", "Jude"];
+    </code>
+</pre>
+            </div>
+            <p>We need to render a list &lt;li&gt; element for each item in the array.</p><br>
+            <p>We can define a <strong>NamesList</strong> component and pass it the array as a prop using a custom data
+                attribute:</p>
+            <div id="code">
+<pre>
+    <code>
+        &lt;NamesList data={names} /&gt;
+    </code>
+</pre>
+            </div>
+            <p>The array is now accessible via props and hence, we can write the component logic:</p>
+            <div id="code">
+<pre>
+    <code>
+        function NamesList(props) {
+            const names = props.data;
+            const listItems = names.map((value) => 
+            &lt;li&gt;{value}&lt;/li&gt;
+            );
+            return &lt;ul&gt;{listItems}&lt;/ul&gt;
+        }
+    </code>
+</pre>
+            </div>
+            <p>From the above lines of code:</p><br>
+            <li>We take the names array from the props, loop through the array using the JavaScript <strong>map</strong>
+                method and return a &lt;li&gt; element for each item.</li>
+            <li>The resulted array is stored in the <strong>listItems</strong> variable.</li>
+            <li>Then, the component returns the listItems array inside a &lt;ul&gt; tag.</li><br>
+            <p>This code will result in a warning saying that each element needs a unique <strong>key</strong>.</p><br>
+            <p>Each element in a list requires a <strong>key</strong> attribute. This is because keys act as unique
+                identifiers, helping React to understand which items have changed, added or removed.</p><br>
+            <p>Keys could be IDs from your data or auto-generated indexes:</p>
+            <div id="code">
+<pre>
+    <code>
+            const listItems = names.map((value, index) => 
+            &lt;li key={index}&gt;{value}&lt;/li&gt;
+            );
+    </code>
+</pre>
+            </div>
+        </section>
+
+        <section class="main-section" id="React_Router">
+            <header>React Router</header>
+            <p>To get started with the React Router, we first need to install it by running:</p>
+            <div id="code">
+<pre>
+    <code>
+        npm install react-router-dom@6
+    </code>
+</pre>
+            </div>
+            <p>This installs version 6 of the React Router.</p><br>
+            <p>If you are using yarn, then run:</p>
+            <div id="code">
+<pre>
+    <code>
+        yarn add react-router-dom@6
+    </code>
+</pre>
+            </div>
+            <p>After installation, the first thing to do is to make React Router available anywhere in your app. To do
+                this, import <strong>BrowserRouter</strong> from <strong>react-router-dom</strong> and then wrap the
+                root component in it like so:</p>
+            <div id="code">
+<pre>
+    <code>
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        import App from './App';
+        import { BrowserRouter } from 'react-router-dom';
+
+        ReactDOM.render(
+            &lt;BrowserRouter&gt;
+                &lt;App /&gt;
+            &lt;/BrowserRouter&gt;
+            document.getElementById('root');
+        );
+    </code>
+</pre>
+            </div>
+            <p>To route to other components, you need to have multiple components like <strong>Home</strong>,
+                <strong>About</strong> and <strong>Contact</strong></p><br>
+            <p>Since the <strong>App</strong> component acts as the root component, we will be creating all our routes
+                in it.</p>
+            <div id="code">
+<pre>
+    <code>
+        import { Routes, Route } from 'react-router-dom';
+        import Home from "./Home";
+        import About from "./About";
+        import Contact from "./Contact";
+
+        function App() {
+            return (
+                &lt;div className="App"&gt;
+                    &lt;Routes&gt;
+                    &lt;Route path="/" element={ &lt;Home/&gt; } /&gt;
+                    &lt;Route path="about" element={ &lt;About/&gt; } /&gt;
+                    &lt;Route path="contact" element={ &lt;Contact/&gt; } /&gt;
+                    &lt;/Routes&gt;
+                &lt;/div&gt;
+            );
+        }
+
+        export default App;
+    </code>
+</pre>
+            </div>
+            <p>From the above lines of code:</p><br>
+            <li><strong>Routes</strong> acts as a container for all the individual routes that will be created in the
+                app.</li>
+            <li><strong>Route</strong> is used to create a single route. It takes in two attributes:
+                <strong>path</strong> and <strong>element</strong>.</li>
+            <li><strong>path</strong> specifies the URL path of the desired component. You can call this pathname
+                anything you want.</li>
+            <li>The path with a <strong>backslash /</strong> means that the component will be rendered first when the
+                app loads for the first time.</li>
+            <li><strong>element</strong> specifies the component the route should render.</li>
+            <p>To navigate to other routes and pathnames, we will use a different React feature called
+                <strong>Link</strong>in desired components.</p>
+            <div id="code">
+<pre>
+    <code>
+        import { Link } from 'react-router-dom';
+        
+        function Home() {
+            return (
+                &lt;div&gt;
+                    &lt;h1&gt;This is the home page&lt;/h1&gt;
+                    &lt;Link to="about"&gt;Click to view the about page&lt;/Link&gt;
+                    &lt;Link to="contact"&gt;Click to view the contact page&lt;/Link&gt;
+                &lt;/div&gt;
+            );
+        }
+
+        export default Home;
+    </code>
+</pre>
+            </div>
+            <p>From the above lines of code:</p><br>
+            <li>The <strong>Link</strong> component is similar to the anchor element &lt;a&gt; in HTML.</li>
+            <li>Its <strong>to</strong> attribute specifies the path which the link takes you to.</li><br>
+            <p>This documentation covers basically everything you need to know to get started with React, so what are
+                you waiting for? Get coding!!!</p>
+        </section>
+
+    </main>
+</body>
+
+</html>
